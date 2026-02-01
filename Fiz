@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Invite</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <div class="container">
+        <div class="header_text">
+            Would you like to be my valentine, Fiza?
+        </div>
+        
+        <div class="gif_container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJleXp6eXp6eXp6eXp6eXp6eXp6eXp6eXp6eXp6eXp6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpN06iMwDsh/giphy.gif" alt="Cute GIF">
+        </div>
+
+        <div class="buttons">
+            <button id="yesButton">Yes</button>
+            <button id="noButton">No</button>
+        </div>
+    </div>
+</body>
+</html>
