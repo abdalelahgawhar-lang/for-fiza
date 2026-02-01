@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For Fiza ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff4d6d, #ff758f);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 350px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            z-index: 10;
+            position: relative;
+        }
+
+        h1 { font-size: 32px; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        p { font-size: 18px; margin-bottom: 25px; line-height: 1.5; }
+
+        .btn-group { display: flex; justify-content: center; gap: 15px; }
+
+        button {
+            font-size: 18px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #yes { background: #2ecc71; color: white; box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4); }
+        #yes:hover { transform: scale(1.1); background: #27ae60; }
+
+        #no { background: #e74c3c; color: white; position: absolute; }
+
+        /* Falling Hearts Animation */
+        .heart {
+            position: fixed;
+            top: -10%;
+            font-size: 20px;
+            user-select: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Dancing Cats Styling */
+        .cat {
+            position: fixed;
+            width: 120px;
+            z-index: 5;
+        }
+        .cat-left { bottom: 20px; left: 20px; }
+        .cat-right { bottom: 20px; right: 20px; }
+    </style>
+</head>
+<body>
+
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/v6aOebdcl8chpkCdfK/giphy.gif" class="cat cat-left" alt="dancing cat">
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/C9x8gX02SnMIoAclao/giphy.gif" class="cat cat-right" alt="dancing cat">
+
+    <div class="card">
+        <h1>Hey Fiza ❤️</h1>
+        <p>I put a lot of thought into this...<br><b>Will you be my Valentine?</b></p>
+        
+        <div class="btn-group">
+            <button id="yes" onclick="sayYes()">Yes!</button>
+            <button id="no" onmouseover="moveNo()">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Create falling hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+
+        setInterval(createHeart, 300);
+
+        function sayYes() {
+            document.body.innerHTML = `
+                <div style="height:100vh; display:flex; justify-content:center; align-items:center; flex-direction:column; background:linear-gradient(135deg,#ff4d6d,#ff758f); color:white; font-family:Arial; text-align:center;">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" width="200">
+                    <h1 style="font-size: 4rem;">YAY FIZA! 💖</h1>
+                    <p style="font-size: 1.5rem;">The cats are throwing a party!</p>
+                </div>
+            `;
+            // Keep the hearts falling even on the success screen
+            setInterval(createHeart, 100);
+        }
+
+        function moveNo() {
+            const button = document.getElementById("no");
+            button.style.position = "fixed"; 
+            const x = Math.random() * (window.innerWidth - button.offsetWidth);
+            const y = Math.random() * (window.innerHeight - button.offsetHeight);
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+    </script>
+</body>
+</html>
