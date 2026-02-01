@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For Fiza | We Live We Love We Lie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif; /* A bit more meme-y */
+            background: linear-gradient(135deg, #ff4d6d, #ff758f);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Glassmorphism Card */
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 30px;
+            max-width: 350px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            z-index: 10;
+        }
+
+        h1 { font-size: 36px; margin-bottom: 5px; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); }
+        p { font-size: 18px; margin-bottom: 20px; font-weight: bold; }
+
+        /* Memes Container */
+        .meme-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+        .meme-gif { width: 100px; height: auto; border-radius: 10px; }
+
+        /* Buttons */
+        .btn-group { display: flex; justify-content: center; gap: 20px; }
+        button {
+            font-size: 20px;
+            padding: 12px 35px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        #yes { background: #2ecc71; color: white; box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4); }
+        #no { background: #e74c3c; color: white; position: absolute; }
+
+        /* Falling Hearts Animation */
+        .heart {
+            position: fixed;
+            top: -10%;
+            font-size: 24px;
+            user-select: none;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        /* Smurf Cat floating background */
+        .smurf-bg {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 150px;
+            z-index: 5;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZueXFpM2ZpZzB3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/v6aOebdcl8chpkCdfK/giphy.gif" class="smurf-bg" alt="Smurf Cat">
+
+    <div class="card">
+        <div class="meme-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZueXFpM2ZpZzB3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/M90mJvC88A8cyNfHCc/giphy.gif" class="meme-gif" alt="Banana Cat">
+        </div>
+        <h1>Fiza! ❤️</h1>
+        <p>Please don't make the banana cat cry... Will you be my Valentine?</p>
+        
+        <div class="btn-group">
+            <button id="yes" onclick="sayYes()">YES!</button>
+            <button id="no" onmouseover="moveNo()">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Heart Rain Logic
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 250);
+
+        // Runaway Button Logic
+        function moveNo() {
+            const button = document.getElementById("no");
+            button.style.position = "fixed";
+            const x = Math.random() * (window.innerWidth - button.offsetWidth);
+            const y = Math.random() * (window.innerHeight - button.offsetHeight);
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+
+        // Success Screen Logic
+        function sayYes() {
+            document.body.innerHTML = `
+                <div style="height:100vh; display:flex; justify-content:center; align-items:center; flex-direction:column; background:#ff758f; color:white; text-align:center;">
+                    <h1 style="font-size: 50px;">HAPPY HAPPY HAPPY! 🍌🐱</h1>
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZueXFpM2ZpZzB3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/v6aOebdcl8chpkCdfK/giphy.gif" width="150" style="margin-bottom: 20px;">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmZueXFpM2ZpZzB3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3eXJ3ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/8m4mYvU7m04A0/giphy.gif" width="250">
+                    <h2 style="font-size: 30px; margin-top: 20px;">Fiza said YES!</h2>
+                </div>
+            `;
+            // Extra fast hearts for celebration
+            setInterval(createHeart, 50);
+        }
+    </script>
+</body>
+</html>
