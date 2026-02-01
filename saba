@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For Saba ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff4d6d, #ff758f);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 25px;
+            max-width: 320px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 10;
+        }
+
+        .cat-gif {
+            width: 140px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+        }
+
+        h1 { font-size: 28px; margin-bottom: 10px; }
+        p { font-size: 18px; margin-bottom: 25px; }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            min-height: 60px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+
+        #yes { background: #2ecc71; color: white; }
+        
+        #no { 
+            background: #e74c3c; 
+            color: white; 
+            position: relative;
+            transition: 0.1s ease-out;
+            z-index: 999;
+        }
+
+        .shy-text {
+            display: block;
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.9;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* Heart Rain */
+        .heart {
+            position: fixed;
+            top: -10%;
+            font-size: 20px;
+            z-index: 1;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/C9x8gX02SnMIoAclao/giphy.gif" class="cat-gif" alt="Cute Cat">
+        
+        <h1>Hey Saba ❤️</h1>
+        <p>Will you be my Valentine?</p>
+        
+        <div class="btn-group">
+            <button id="yes" onclick="sayYes()">Yes</button>
+            <button id="no" onmouseover="moveNo()" onclick="moveNo()" ontouchstart="moveNo()">No</button>
+        </div>
+
+        <span class="shy-text">No seems a bit shy 😈</span>
+    </div>
+
+    <script>
+        // Heart animation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+
+        // Infinite Runaway Logic
+        function moveNo() {
+            const button = document.getElementById("no");
+            button.style.position = "fixed"; 
+            
+            // Random coordinates within the viewport
+            const x = Math.random() * (window.innerWidth - button.offsetWidth);
+            const y = Math.random() * (window.innerHeight - button.offsetHeight);
+
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+
+        function sayYes() {
+            document.body.innerHTML = `
+                <div style="height:100vh; display:flex; justify-content:center; align-items:center; flex-direction:column; background:linear-gradient(135deg,#ff4d6d,#ff758f); color:white; text-align:center; padding: 20px;">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHJueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueGZueCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" width="200">
+                    <h1 style="font-size: 3rem;">YAY SABA! 💖</h1>
+                    <p style="font-size: 1.5rem;">I knew you'd say yes!</p>
+                </div>
+            `;
+            // More hearts for the celebration!
+            setInterval(createHeart, 100);
+        }
+    </script>
+</body>
+</html>
